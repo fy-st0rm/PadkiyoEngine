@@ -2,7 +2,7 @@
 #include "cbuild.h"
 
 void build_testbed(char** argv) {
-	CBuild cbuild("g++");
+	CBuild cbuild("gcc");
 	cbuild
 		.out("bin", "testbed")
 		.flags({"-Wall", "-Wextra"})
@@ -16,7 +16,7 @@ void build_testbed(char** argv) {
 }
 
 void build_tests(char** argv) {
-	CBuild cbuild("g++");
+	CBuild cbuild("gcc");
 	cbuild
 		.out("bin", "testbed")
 		.flags({"-Wall", "-Wextra"})

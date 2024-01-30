@@ -1,6 +1,6 @@
 #include "pe.h"
 
-DEFINE_RESULT(int32_t, int32_t)
+DEFINE_RESULT(int32_t, int32_t, int32_t)
 
 Result_int32_t result_test_foo(int32_t n) {
 	if (n % 2 == 0)
