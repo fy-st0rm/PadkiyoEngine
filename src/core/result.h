@@ -32,7 +32,7 @@ typedef enum {
                                                               \
 	V Result_##name##_unwrap(Result_##name res) {               \
 		if (res.status == OK) return res.__value.result;          \
-		assert(0, "Attempted to unwrap errored result\n");        \
+		pe_assert(0, "Attempted to unwrap errored result\n");     \
 	}                                                           \
                                                               \
 	V Result_##name##_unwrap_or(Result_##name res, V x) {       \
@@ -42,7 +42,7 @@ typedef enum {
 	                                                            \
 	E Result_##name##_unwrap_err(Result_##name res) {           \
 		if (res.status == ERROR) return res.__value.error;        \
-		assert(0, "Result was not an error\n");                   \
+		pe_assert(0, "Result was not an error\n");                \
 	}                                                           \
 
 

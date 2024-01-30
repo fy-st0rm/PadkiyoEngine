@@ -9,15 +9,15 @@ Result_int32_t result_test_foo(int32_t n) {
 }
 
 void result_test() {
-	assert(
+	pe_assert(
 		Result_int32_t_unwrap(result_test_foo(10)) == 200,
 		"[TEST FAILED]\n"
 	);
-	assert(
+	pe_assert(
 		Result_int32_t_unwrap_or(result_test_foo(11), 69) == 69,
 		"[TEST FAILED]\n"
 	);
-	assert(
+	pe_assert(
 		Result_int32_t_unwrap_err(result_test_foo(11)) == 500,
 		"[TEST FAILED]\n"
 	);

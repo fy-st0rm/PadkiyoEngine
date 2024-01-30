@@ -8,11 +8,14 @@
  * @brief: Assertion macro
  */
 
-#define __assert(...) ({ fprintf(stderr, "\033[31m[ASSERTION]: %s:%d:\033[0m ", __FILE__, __LINE__); fprintf(stderr, __VA_ARGS__); exit(1); })
-#define assert(x, ...) \
+#define pe_assert(x, ...) \
 	do {\
-		if (!(x)) (__assert(__VA_ARGS__));\
-	} while (0);\
+		if (!(x)) {\
+			fprintf(stderr, "\033[31m[ASSERTION]: %s:%d:\033[0m ", __FILE__, __LINE__);\
+			fprintf(stderr, __VA_ARGS__);\
+			exit(1);\
+		}\
+	} while(0);\
 
 /*
  * @brief: Loging color codes

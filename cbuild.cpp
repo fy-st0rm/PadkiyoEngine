@@ -48,8 +48,11 @@ void build_engine() {
 	CBuild cbuild("gcc");
 	cbuild
 		.out("bin", "libpe.a")
-		.flags({"-Wall", "-Wextra", "-std=c99"})
+		.flags({"-Wall", "-Wextra"})
 		.inc_paths({"src/"})
+		.src({
+			"src/allocators/trace_allocator.c"
+		})
 		.objs({
 			"src/pe_glfw.o",
 			 "src/external/glew/src/glew.o",
