@@ -6,5 +6,10 @@
 
 #include "allocators/trace_allocator.h"
 
+#include "window/window.h"
+#include "math/vec.h"
+
+#include "init.h"
+
 #include "external/glew/include/GL/glew.h"
 #include "external/glfw/include/GLFW/glfw3.h"

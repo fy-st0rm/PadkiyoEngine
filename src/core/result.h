@@ -7,15 +7,21 @@ typedef enum {
 	OK, ERROR
 } ResultStatus;
 
-#define DEFINE_RESULT(name, V, E)                             \
+#define DECLARE_RESULT(name, V)                               \
 	typedef struct {                                            \
 		ResultStatus status;                                      \
 		union {                                                   \
 			V result;                                               \
-			E error;                                                \
+			const char* error;                                      \
 		} __value;                                                \
 	} Result_##name;                                            \
-                                                              \
+	Result_##name Result_##name##_ok(V v);                      \
+	Result_##name Result_##name##_err(const char* e);           \
+	V Result_##name##_unwrap(Result_##name res);                \
+	V Result_##name##_unwrap_or(Result_##name res, V x);        \
+	const char* Result_##name##_unwrap_err(Result_##name res);  \
+
+#define DEFINE_RESULT(name, V)                                \
 	Result_##name Result_##name##_ok(V v) {                     \
 		return (Result_##name) {                                  \
 			.status = OK,                                           \
@@ -23,7 +29,7 @@ typedef enum {
 		};                                                        \
 	}                                                           \
                                                               \
-	Result_##name Result_##name##_err(E e) {                    \
+	Result_##name Result_##name##_err(const char* e) {          \
 		return (Result_##name) {                                  \
 			.status = ERROR,                                        \
 			.__value.error = e                                      \
@@ -32,7 +38,7 @@ typedef enum {
                                                               \
 	V Result_##name##_unwrap(Result_##name res) {               \
 		if (res.status == OK) return res.__value.result;          \
-		pe_assert(0, "Attempted to unwrap errored result\n");     \
+		pe_assert(0, "%s\n", res.__value.error);                  \
 	}                                                           \
                                                               \
 	V Result_##name##_unwrap_or(Result_##name res, V x) {       \
@@ -40,7 +46,7 @@ typedef enum {
 		return x;                                                 \
 	}                                                           \
 	                                                            \
-	E Result_##name##_unwrap_err(Result_##name res) {           \
+	const char* Result_##name##_unwrap_err(Result_##name res) { \
 		if (res.status == ERROR) return res.__value.error;        \
 		pe_assert(0, "Result was not an error\n");                \
 	}                                                           \

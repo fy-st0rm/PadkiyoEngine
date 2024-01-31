@@ -1,13 +1,17 @@
 #include "pe.h"
 
 int main() {
-	Trace_Allocator* allocator = trace_allocator_new();
+	pe_assert(pe_init(), "Failed to initialize PE\n");
 
-	char* a = (char*) trace_allocator_alloc(allocator, 100);
-	strcpy(a, "Hello world\n");
-	printf("%s", a);
-	trace_allocator_free(allocator, a);
+	PE_Window* window = Result_Win_ptr_unwrap(pe_window_new("Hello", 800, 600));
 
-	trace_allocator_delete(allocator);
+	while (!window->should_close) {
+		pe_window_clear_rgba(window, (PE_Vec4) { .r = 0.5, .g = 0.5, .b = 0.5, .a = 1 });
+		pe_window_update(window);
+	}
+
+	pe_window_delete(window);
+
+	pe_quit();
 	return 0;
 }

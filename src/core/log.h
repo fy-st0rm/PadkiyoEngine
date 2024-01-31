@@ -1,5 +1,5 @@
-#ifndef __LOG_H__
-#define __LOG_H__
+#ifndef __PE_log_H__
+#define __PE_log_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,54 +18,54 @@
 	} while(0);\
 
 /*
- * @brief: Loging color codes
+ * @brief: pe_loging color codes
  */
 
-#define LOG_NORMAL 0
-#define LOG_ERROR  91
-#define LOG_SUCESS 92
-#define LOG_WARN   93
-#define LOG_INFO   95
+#define PE_LOG_NORMAL 0
+#define PE_LOG_ERROR  91
+#define PE_LOG_SUCESS 92
+#define PE_LOG_WARN   93
+#define PE_LOG_INFO   95
 
 /*
- * @brief: Loging macros
+ * @brief: pe_loging macros
  */
 
-#define log_typed(type, ...)         \
+#define pe_log_typed(type, ...)         \
 	({                                     \
 		printf("\033[%dm", type);            \
 		printf(__VA_ARGS__);                 \
-		printf("\033[%dm", LOG_NORMAL);   \
+		printf("\033[%dm", PE_LOG_NORMAL);   \
 	})
 
-#define log(...)                             \
+#define pe_log(...)                             \
 	({                                            \
-		log_typed(LOG_NORMAL, "[LOG]:    ");  \
-		log_typed(LOG_NORMAL, __VA_ARGS__);   \
+		pe_log_typed(PE_LOG_NORMAL, "[pe_log]:    ");  \
+		pe_log_typed(PE_LOG_NORMAL, __VA_ARGS__);   \
 	})
 
-#define log_sucess(...)                      \
+#define pe_log_sucess(...)                      \
 	({                                            \
-		log_typed(LOG_SUCESS, "[SUCESS]: ");  \
-		log_typed(LOG_SUCESS, __VA_ARGS__);   \
+		pe_log_typed(PE_LOG_SUCESS, "[SUCESS]: ");  \
+		pe_log_typed(PE_LOG_SUCESS, __VA_ARGS__);   \
 	})
 
-#define log_warn(...)                        \
+#define pe_log_warn(...)                        \
 	({                                            \
-		log_typed(LOG_WARN,   "[WARN]:   ");  \
-		log_typed(LOG_WARN, __VA_ARGS__);     \
+		pe_log_typed(PE_LOG_WARN,   "[WARN]:   ");  \
+		pe_log_typed(PE_LOG_WARN, __VA_ARGS__);     \
 	})
 
-#define log_error(...)                       \
+#define pe_log_error(...)                       \
 	({                                            \
-		log_typed(LOG_ERROR,  "[ERROR]:  ");  \
-		log_typed(LOG_ERROR, __VA_ARGS__);    \
+		pe_log_typed(PE_LOG_ERROR,  "[ERROR]:  ");  \
+		pe_log_typed(PE_LOG_ERROR, __VA_ARGS__);    \
 	})
 
-#define log_info(...)                        \
+#define pe_log_info(...)                        \
 	({                                            \
-		log_typed(LOG_INFO,   "[INFO]:   ");  \
-		log_typed(LOG_INFO, __VA_ARGS__);     \
+		pe_log_typed(PE_LOG_INFO,   "[INFO]:   ");  \
+		pe_log_typed(PE_LOG_INFO, __VA_ARGS__);     \
 	})
 
-#endif // __LOG_H__
+#endif // __PE_LOG_H__

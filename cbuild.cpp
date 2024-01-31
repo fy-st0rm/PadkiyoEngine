@@ -5,10 +5,10 @@ void build_testbed(char** argv) {
 	CBuild cbuild("gcc");
 	cbuild
 		.out("bin", "testbed")
-		.flags({"-Wall", "-Wextra"})
+		.flags({"-Wall"})
 		.inc_paths({"src/"})
 		.lib_paths({"bin/"})
-		.libs({"pe"})
+		.libs({"pe", "GL", "m"})
 		.src({"testbed/main.c"})
 		.build()
 		.clean()
@@ -19,7 +19,7 @@ void build_tests(char** argv) {
 	CBuild cbuild("gcc");
 	cbuild
 		.out("bin", "testbed")
-		.flags({"-Wall", "-Wextra"})
+		.flags({"-Wall"})
 		.inc_paths({"src/"})
 		.lib_paths({"bin/"})
 		.libs({"pe"})
@@ -48,10 +48,13 @@ void build_engine() {
 	CBuild cbuild("gcc");
 	cbuild
 		.out("bin", "libpe.a")
-		.flags({"-Wall", "-Wextra"})
+		.flags({"-Wall" })
 		.inc_paths({"src/"})
 		.src({
-			"src/allocators/trace_allocator.c"
+			"src/allocators/trace_allocator.c",
+			"src/window/window.c",
+			"src/math/vec.c",
+			"src/init.c"
 		})
 		.objs({
 			"src/pe_glfw.o",
