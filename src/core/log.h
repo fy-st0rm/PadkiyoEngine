@@ -1,8 +1,7 @@
 #ifndef __PE_log_H__
 #define __PE_log_H__
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "includes.h"
 
 /*
  * @brief: Assertion macro
@@ -67,5 +66,32 @@
 		pe_log_typed(PE_LOG_INFO,   "[INFO]:   ");  \
 		pe_log_typed(PE_LOG_INFO, __VA_ARGS__);     \
 	})
+
+
+/*
+ * @brief Macros and functions for opengl error handling
+ */
+
+#define GLCall(x)\
+	(\
+		clear_gl_error(), \
+		x\
+	);\
+	pe_assert(gl_error_log(#x, __FILE__, __LINE__), "Opengl failed.\n");\
+
+static void clear_gl_error() {
+	while(glGetError());
+}
+
+static bool gl_error_log(const char* function, const char* file, int line) {
+	GLenum error;
+	while ((error = glGetError())) {
+		pe_log_error("[Error code]: %d\n", error);
+		pe_log_error("[Error message]: %s\n", gluErrorString(error));
+		pe_log_error("[Opengl error]: %s %s: %d\n", function ,file, line);
+		return false;
+	}
+	return true;
+}
 
 #endif // __PE_LOG_H__

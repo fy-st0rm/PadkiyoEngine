@@ -1,11 +1,12 @@
 #include "window.h"
 
 extern PE_State* pe_state;
-DEFINE_RESULT(Win_ptr, PE_Window*)
+DEFINE_RESULT(Win_ptr, PE_Window*);
 
 Result_Win_ptr pe_window_new(const char* title, u32 width, u32 height) {
 	PE_Window* window = trace_allocator_alloc(pe_state->t_alloc, sizeof(PE_Window));
 
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 	window->glfw_window = glfwCreateWindow(width, height, title, NULL, NULL);
 	if (!window->glfw_window)
 		return Result_Win_ptr_err("Failed to create glfw window.");

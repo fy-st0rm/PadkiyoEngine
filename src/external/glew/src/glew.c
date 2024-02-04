@@ -20855,7 +20855,7 @@ const GLubyte * GLEWAPIENTRY glewGetString (GLenum name)
 
 /* ------------------------------------------------------------------------ */
 
-GLboolean glewExperimental = GL_FALSE;
+GLboolean glewExperimental = GL_TRUE;
 
 GLenum GLEWAPIENTRY glewInit (void)
 {
