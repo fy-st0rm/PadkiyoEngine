@@ -54,6 +54,7 @@ void build_engine() {
 			"src/allocators/trace_allocator.c",
 			"src/window/window.c",
 			"src/math/vec.c",
+			"src/math/mat.c",
 			"src/init.c"
 		})
 		.objs({

@@ -7,7 +7,9 @@
 #include "allocators/trace_allocator.h"
 
 #include "window/window.h"
+
 #include "math/vec.h"
+#include "math/mat.h"
 
 #include "init.h"
 
