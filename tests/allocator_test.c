@@ -19,5 +19,5 @@ void trace_allocator_test() {
 	);
 
 	trace_allocator_delete(allocator);
-	log_sucess("%s: [TEST PASSED]\n", __FILE__);
+	pe_log_sucess("%s: [TEST PASSED]\n", __FILE__);
 }

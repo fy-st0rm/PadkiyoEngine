@@ -22,5 +22,5 @@ void result_test() {
 		strcmp(Result_int32_t_unwrap_err(result_test_foo(11)), "Not even") == 0,
 		"[TEST FAILED]\n"
 	);
-	log_sucess("%s: [TEST PASSED]\n", __FILE__);
+	pe_log_sucess("%s: [TEST PASSED]\n", __FILE__);
 }

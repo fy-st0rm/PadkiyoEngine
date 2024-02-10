@@ -1,10 +1,9 @@
 #include "window.h"
 
-extern PE_State* pe_state;
 DEFINE_RESULT(Win_ptr, PE_Window*);
 
 Result_Win_ptr pe_window_new(const char* title, u32 width, u32 height) {
-	PE_Window* window = trace_allocator_alloc(pe_state->t_alloc, sizeof(PE_Window));
+	PE_Window* window = (PE_Window*) pe_alloc(sizeof(PE_Window));
 
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 	window->glfw_window = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -22,7 +21,7 @@ Result_Win_ptr pe_window_new(const char* title, u32 width, u32 height) {
 }
 
 void pe_window_delete(PE_Window* window) {
-	trace_allocator_free(pe_state->t_alloc, window);
+	pe_free(window);
 }
 
 void pe_window_update(PE_Window* window) {

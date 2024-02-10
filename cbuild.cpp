@@ -8,7 +8,7 @@ void build_testbed(char** argv) {
 		.flags({"-Wall"})
 		.inc_paths({"src/"})
 		.lib_paths({"bin/"})
-		.libs({"pe", "GL", "m"})
+		.libs({"pe", "GL", "GLU", "m"})
 		.src({"testbed/main.c"})
 		.build()
 		.clean()
@@ -22,7 +22,7 @@ void build_tests(char** argv) {
 		.flags({"-Wall"})
 		.inc_paths({"src/"})
 		.lib_paths({"bin/"})
-		.libs({"pe"})
+		.libs({"pe", "GL", "GLU", "m"})
 		.src({"tests/main.c"})
 		.build()
 		.clean()
@@ -52,6 +52,7 @@ void build_engine() {
 		.inc_paths({"src/"})
 		.src({
 			"src/allocators/trace_allocator.c",
+			"src/allocators/alloc.c",
 			"src/window/window.c",
 			"src/math/vec.c",
 			"src/math/mat.c",

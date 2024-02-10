@@ -4,9 +4,8 @@
 #include "core/includes.h"
 #include "core/result.h"
 #include "core/defines.h"
-#include "allocators/trace_allocator.h"
 #include "math/vec.h"
-#include "init.h"
+#include "allocators/alloc.h"
 
 typedef struct {
 	GLFWwindow* glfw_window;
