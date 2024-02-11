@@ -18,7 +18,7 @@ void dyn_array_test() {
 	);
 
 	pe_assert(
-		arr->len == 9,
+		dyn_array_len(arr) == 9,
 		"[TEST FAILED]\n"
 	);
 

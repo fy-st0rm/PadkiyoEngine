@@ -19,8 +19,10 @@
 
 #define dyn_array_delete(arr) \
 	do {                        \
-		pe_free((arr)->data);     \
-		pe_free((arr));           \
+		if ((arr)) {              \
+			pe_free((arr)->data);   \
+			pe_free((arr));         \
+		}                         \
 	} while (0)                 \
 
 #define dyn_array_check_cap(arr)                                     \
@@ -36,6 +38,20 @@
 			pe_free(tmp);                                                  \
 		}                                                                \
 	} while (0)                                                        \
+
+#define dyn_array_len(arr)      \
+	({                            \
+		i32 len = 0;                \
+		if ((arr)) len = arr->len;  \
+		len;                        \
+	})                            \
+
+#define dyn_array_cap(arr)     \
+	({                           \
+		i32 cap = 0;               \
+		if ((arr)) cap = arr->cap; \
+		cap;                       \
+	})                           \
 
 #define dyn_array_append(arr, val)                                   \
 	do {                                                               \
