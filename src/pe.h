@@ -9,6 +9,8 @@
 #include "allocators/alloc.h"
 
 #include "window/window.h"
+#include "event/event.h"
+#include "event/key_defines.h"
 
 #include "math/vec.h"
 #include "math/mat.h"
