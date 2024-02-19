@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/utils.h"
 #include "core/log.h"
 #include "core/result.h"
 #include "core/defines.h"
@@ -12,6 +13,7 @@
 #include "event/event.h"
 #include "event/key_defines.h"
 
+#include "math/utils.h"
 #include "math/vec.h"
 #include "math/mat.h"
 

@@ -51,6 +51,7 @@ void build_engine() {
 		.flags({"-Wall" })
 		.inc_paths({"src/"})
 		.src({
+			"src/core/utils.c",
 			"src/allocators/trace_allocator.c",
 			"src/allocators/alloc.c",
 			"src/window/window.c",

@@ -1,5 +1,5 @@
-#ifndef __UTIL_H__
-#define __UTIL_H__
+#ifndef __MATH_UTILS_H__
+#define __MATH_UTILS_H__
 
 #include "core/includes.h"
 #include "core/defines.h"
@@ -12,4 +12,4 @@ static b8 f32_eq(f32 a, f32 b) {
 	return fabs(a - b) < 0.01f;
 }
 
-#endif // __UTIL_H__
+#endif // __MATH_UTILS_H__
