@@ -111,7 +111,7 @@ PE_Mat4 pe_ortho_projection(f32 left, f32 right, f32 top, f32 bottom, f32 near, 
 }
 
 PE_Mat4 pe_persp_projection(f32 aspect_ratio, f32 fov, f32 near, f32 far) {
-	f32 t = tanf(iso_radians(fov / 2));
+	f32 t = tanf(pe_radians(fov / 2));
 	f32 z_range = near - far;
 	f32 A = (-far - near) / z_range;
 	f32 B = (2 * far * near) / z_range;
