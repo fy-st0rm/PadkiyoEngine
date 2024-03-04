@@ -69,6 +69,9 @@ f32 pe_vec2_mag(PE_Vec2 v);
 f32 pe_vec3_mag(PE_Vec3 v);
 f32 pe_vec4_mag(PE_Vec4 v);
 
+PE_Vec2 pe_vec2_dir(PE_Vec2 v);
+PE_Vec3 pe_vec3_dir(PE_Vec3 v);
+
 PE_Vec2 pe_vec2_normalize(PE_Vec2 v);
 PE_Vec3 pe_vec3_normalize(PE_Vec3 v);
 PE_Vec4 pe_vec4_normalize(PE_Vec4 v);

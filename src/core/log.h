@@ -39,7 +39,7 @@
 
 #define pe_log(...)                             \
 	({                                            \
-		pe_log_typed(PE_LOG_NORMAL, "[pe_log]:    ");  \
+		pe_log_typed(PE_LOG_NORMAL, "[LOG]:    ");  \
 		pe_log_typed(PE_LOG_NORMAL, __VA_ARGS__);   \
 	})
 

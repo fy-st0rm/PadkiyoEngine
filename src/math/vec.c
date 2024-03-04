@@ -174,6 +174,34 @@ f32 pe_vec4_mag(PE_Vec4 v) {
 	return sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
 }
 
+PE_Vec2 pe_vec2_dir(PE_Vec2 v) {
+	PE_Vec2 d = { 0, 0 };
+	if (v.x < 0) d.x = -1;
+	if (v.x > 0) d.x = 1;
+	if (v.x == 0) d.x = 0;
+
+	if (v.y < 0) d.y = -1;
+	if (v.y > 0) d.y = 1;
+	if (v.y == 0) d.y = 0;
+	return d;
+}
+
+PE_Vec3 pe_vec3_dir(PE_Vec3 v) {
+	PE_Vec3 d = { 0, 0 };
+	if (v.x < 0) d.x = -1;
+	if (v.x > 0) d.x = 1;
+	if (v.x == 0) d.x = 0;
+
+	if (v.y < 0) d.y = -1;
+	if (v.y > 0) d.y = 1;
+	if (v.y == 0) d.y = 0;
+
+	if (v.z < 0) d.z = -1;
+	if (v.z > 0) d.z = 1;
+	if (v.z == 0) d.z = 0;
+	return d;
+}
+
 PE_Vec2 pe_vec2_normalize(PE_Vec2 v) {
 	f32 r = pe_vec2_mag(v);
 	return (PE_Vec2) {
