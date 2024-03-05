@@ -21,7 +21,6 @@ void key_callback(GLFWwindow* window, i32 key, i32 scancode, i32 action, i32 mod
 }
 
 void mouse_motion_callback(GLFWwindow* window, f64 mouse_x, f64 mouse_y) {
-	printf("%lf %lf\n", mouse_x, mouse_y);
 	PE_Event event = {
 		.type = PE_MOUSE_MOTION,
 		.mouse = (PE_Vec2) { mouse_x, mouse_y }
