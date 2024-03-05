@@ -5,7 +5,8 @@
 #include "core/defines.h"
 
 #define PE_PI 3.14159
-#define pe_radians(x) x * PE_PI / 180
+#define pe_to_radians(x) x * PE_PI / 180
+#define pe_to_degrees(x) x * 180 / PE_PI
 #define pe_rand_init(seed) srand(seed)
 #define pe_rand_range(l, u) rand() % (u - l + 1) + l
 

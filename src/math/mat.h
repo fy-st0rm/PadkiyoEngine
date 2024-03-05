@@ -19,5 +19,8 @@ PE_Mat4 pe_mat4_translate(PE_Mat4 m, PE_Vec3 v);
 PE_Mat4 pe_mat4_transpose(PE_Mat4 m);
 PE_Mat4 pe_ortho_projection(f32 left, f32 right, f32 top, f32 bottom, f32 near, f32 far);
 PE_Mat4 pe_persp_projection(f32 aspect_ratio, f32 fov, f32 near, f32 far);
+PE_Mat4 pe_rotate_x(f32 theta);
+PE_Mat4 pe_rotate_y(f32 theta);
+PE_Mat4 pe_rotate_z(f32 theta);
 
 #endif // __MAT_H__

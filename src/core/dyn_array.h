@@ -30,7 +30,7 @@
 		if ((arr)->len >= (arr)->cap) {                                  \
 			void* tmp = pe_alloc(sizeof((arr)->dummy) * (arr)->len);       \
 			memcpy(tmp, (arr)->data, sizeof((arr)->dummy) * (arr)->len);   \
-			free((arr)->data);                                             \
+			pe_free((arr)->data);                                          \
                                                                      \
 			(arr)->cap += DYN_ARR_GROW_RATE * DYN_ARR_MEMORY_CAP;          \
 			(arr)->data = pe_alloc(sizeof((arr)->dummy) * (arr)->cap);     \
@@ -62,7 +62,7 @@
 			(arr)->data = pe_alloc(sizeof((arr)->dummy) * (arr)->cap);     \
 		}                                                                \
 		dyn_array_check_cap(arr);                                        \
-		(arr)->data[(arr)->len++] = (val);                                 \
+		(arr)->data[(arr)->len++] = (val);                               \
 	} while (0)                                                        \
 
 #define dyn_array_get(arr, idx)                                                                            \

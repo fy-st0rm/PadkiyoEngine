@@ -111,7 +111,7 @@ PE_Mat4 pe_ortho_projection(f32 left, f32 right, f32 top, f32 bottom, f32 near, 
 }
 
 PE_Mat4 pe_persp_projection(f32 aspect_ratio, f32 fov, f32 near, f32 far) {
-	f32 t = tanf(pe_radians(fov / 2));
+	f32 t = tanf(pe_to_radians(fov / 2));
 	f32 z_range = near - far;
 	f32 A = (-far - near) / z_range;
 	f32 B = (2 * far * near) / z_range;
@@ -122,6 +122,40 @@ PE_Mat4 pe_persp_projection(f32 aspect_ratio, f32 fov, f32 near, f32 far) {
 			{                      0, 1 / t, 0, 0 },
 			{                      0,     0, A, B },
 			{                      0,     0, 1, 0 }
+		}
+	};
+}
+
+PE_Mat4 pe_rotate_x(f32 theta) {
+	return (PE_Mat4) {
+		.m = {
+			{ 1.0f,         0.0f,        0.0f, 0.0f },
+			{ 0.0f,  cosf(theta), sinf(theta), 0.0f },
+			{ 0.0f, -sinf(theta), cosf(theta), 0.0f },
+			{ 0.0f,         0.0f,        0.0f, 1.0f }
+		}
+	};
+}
+
+
+PE_Mat4 pe_rotate_y(f32 theta) {
+	return (PE_Mat4) {
+		.m = {
+			{  cosf(theta),  0.0f, sinf(theta), 0.0f },
+			{         0.0f,  1.0f,        0.0f, 0.0f },
+			{ -sinf(theta),  0.0f, cosf(theta), 0.0f },
+			{         0.0f,  0.0f,        0.0f, 1.0f }
+		}
+	};
+}
+
+PE_Mat4 pe_rotate_z(f32 theta) {
+	return (PE_Mat4) {
+		.m = {
+			{  cosf(theta), sinf(theta), 0.0f, 0.0f },
+			{ -sinf(theta), cosf(theta), 0.0f, 0.0f },
+			{         0.0f,        0.0f, 1.0f, 0.0f },
+			{         0.0f,        0.0f, 0.0f, 1.0f }
 		}
 	};
 }
