@@ -13,7 +13,6 @@ typedef enum {
 	PE_KEYDOWN,
 	PE_KEYUP,
 
-	PE_MOUSE_MOTION,
 	PE_MOUSE_BUTTON_DOWN,
 	PE_MOUSE_BUTTON_UP
 } PE_Event_Type;
